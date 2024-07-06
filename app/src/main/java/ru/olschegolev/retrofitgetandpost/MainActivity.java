@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void createPost() {
-        apiService.createPost("Heading", "Body post", 1).enqueue(new Callback<Post>() {
+        String authToken ="";
+        apiService.createPost(authToken, "Title", "Body post", 1).enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
                 if (response.isSuccessful()) {
@@ -75,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getPosts() {
-        apiService.getPosts().enqueue(new Callback<List<Post>>() {
+        String authToken ="";
+        apiService.getPosts(authToken).enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (response.isSuccessful()) {

@@ -13,21 +13,13 @@ import retrofit2.http.POST;
 public interface ApiService {
 
 
-    @GET("/posts")
-    Call<List<Post>> getPosts();
 
     @GET("/posts")
-    Call<List<Post>> getPostsApi(@Header("Authorization") String authToken);
+    Call<List<Post>> getPosts(@Header("Authorization") String authToken);
 
     @POST("/posts")
     @FormUrlEncoded
-    Call<Post> createPost(@Field("title") String title,
-                          @Field("body") String body,
-                          @Field("userId") int userid);
-
-    @POST("/posts")
-    @FormUrlEncoded
-    Call<Post> createPostApi(
+    Call<Post> createPost(
             @Header("Authorization") String authToken,
             @Field("title") String title,
             @Field("body") String body,
